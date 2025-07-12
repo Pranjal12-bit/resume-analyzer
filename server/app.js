@@ -48,48 +48,42 @@ connectDatabase();
 // =============================================================================
 
 const allowedOrigins = [
-  "http://localhost:3000", // Local development frontend
-  "https://resume-analyzer-frontend-j7zp.onrender.com"// Production frontend
+  "http://localhost:3000", // Local frontend
+  "https://resume-analyzer-frontend-j7zp.onrender.com", // Deployed frontend
 ];
 
 const corsOptions = {
   origin: (origin, callback) => {
-    // Allow requests with no origin (mobile apps, Postman, etc.)
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+    if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       console.warn(`CORS: Blocked origin - ${origin}`);
       callback(new Error("Not allowed by CORS"));
     }
   },
-  credentials: true, // Allow cookies and authorization headers
+  credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
 };
 
-app.use(cors(corsOptions));
+// ✅ Handle preflight requests for all routes
+app.options("*", cors(corsOptions));
+app.use(cors(corsOptions)); // ✅ Enable CORS for all requests
 
 // =============================================================================
 // Middleware
 // =============================================================================
 
-// Parse JSON requests with size limit for file uploads
 app.use(express.json({ limit: "10mb" }));
-
-// Parse URL-encoded requests
 app.use(express.urlencoded({ extended: true }));
 
 // =============================================================================
 // Routes
 // =============================================================================
 
-// Authentication routes
 app.use("/api/auth", authRoutes);
-
-// Resume-related routes
 app.use("/api/resume", resumeRoutes);
 
-// Health check endpoint
 app.get("/api/health", (req, res) => {
   res.status(200).json({
     status: "UP",
@@ -98,7 +92,6 @@ app.get("/api/health", (req, res) => {
   });
 });
 
-// Root endpoint
 app.get("/", (req, res) => {
   res.json({
     message: "Welcome to the AI Resume Analyzer Backend!",
@@ -115,9 +108,6 @@ app.get("/", (req, res) => {
 // Error Handling
 // =============================================================================
 
-/**
- * Global error handler middleware
- */
 app.use((err, req, res, next) => {
   console.error("Global Error Handler:", {
     message: err.message,
@@ -126,7 +116,6 @@ app.use((err, req, res, next) => {
     method: req.method,
   });
 
-  // Handle specific error types
   if (err.name === "ValidationError") {
     return res.status(400).json({
       error: "Validation Error",
@@ -140,17 +129,13 @@ app.use((err, req, res, next) => {
     });
   }
 
-  // Default error response
   res.status(err.status || 500).json({
     error: err.message || "An unexpected error occurred",
     ...(process.env.NODE_ENV === "development" && { stack: err.stack }),
   });
 });
 
-/**
- * Handle 404 errors for undefined routes
- * Fixed for Express 5.x compatibility
- */
+// 404 Handler for undefined routes
 app.use((req, res) => {
   res.status(404).json({
     error: "Route not found",
@@ -162,9 +147,6 @@ app.use((req, res) => {
 // Server Startup
 // =============================================================================
 
-/**
- * Start the Express server
- */
 const startServer = () => {
   app.listen(PORT, () => {
     console.log(`🚀 Server running on port ${PORT}`);
@@ -173,26 +155,20 @@ const startServer = () => {
   });
 };
 
-// Start server
 startServer();
 
 // =============================================================================
 // Graceful Shutdown
 // =============================================================================
 
-/**
- * Handle graceful shutdown
- */
 const gracefulShutdown = (signal) => {
   console.log(`\n${signal} received. Starting graceful shutdown...`);
-
   mongoose.connection.close(() => {
     console.log("MongoDB connection closed.");
     process.exit(0);
   });
 };
 
-// Listen for shutdown signals
 process.on("SIGTERM", () => gracefulShutdown("SIGTERM"));
 process.on("SIGINT", () => gracefulShutdown("SIGINT"));
 
