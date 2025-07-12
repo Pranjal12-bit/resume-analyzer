@@ -49,7 +49,7 @@ connectDatabase();
 
 const allowedOrigins = [
   "http://localhost:3000", // Local development frontend
-  "https://resume-analyzer-frontend-gray.vercel.app", // Production frontend
+  "https://resume-analyzer-backend-e7xk.onrender.com", // Production frontend
 ];
 
 const corsOptions = {
