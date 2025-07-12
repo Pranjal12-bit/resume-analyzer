@@ -44,31 +44,11 @@ const connectDatabase = async () => {
 connectDatabase();
 
 // =============================================================================
-// CORS Configuration
+// CORS Configuration (Allow All)
 // =============================================================================
 
-const allowedOrigins = [
-  "http://localhost:3000", // Local frontend
-  "https://resume-analyzer-frontend-j7zp.onrender.com", // Deployed frontend
-];
-
-const corsOptions = {
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      console.warn(`CORS: Blocked origin - ${origin}`);
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-};
-
-// ✅ Handle preflight requests for all routes
-app.options("*", cors(corsOptions));
-app.use(cors(corsOptions)); // ✅ Enable CORS for all requests
+app.use(cors());              // ✅ Allow all origins
+app.options("*", cors());     // ✅ Allow preflight requests from all origins
 
 // =============================================================================
 // Middleware
