@@ -1,0 +1,536 @@
+/* ==========================================================================
+   Resume Details Page Styles
+   ========================================================================== */
+
+.details-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* ==========================================================================
+   Page Header
+   ========================================================================== */
+.details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-color);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.back-button i {
+  margin-right: 0.5rem;
+}
+
+.back-button:hover {
+  color: var(--primary-color);
+}
+
+.details-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+/* ==========================================================================
+   Main Content Card
+   ========================================================================== */
+.resume-details-card {
+  background-color: var(--background-color);
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+  padding: 2rem;
+}
+
+.resume-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1.5rem;
+}
+
+.resume-details-info h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  word-break: break-all;
+}
+
+.job-role {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.upload-date {
+  color: var(--text-light);
+  font-size: 0.875rem;
+}
+
+.score-circle.large {
+  width: 80px;
+  height: 80px;
+  font-size: 2rem;
+}
+
+/* ==========================================================================
+   Feedback Section
+   ========================================================================== */
+.feedback-container {
+  margin-top: 2rem;
+}
+
+.feedback-container h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+}
+
+/* ==========================================================================
+   Tabbed Interface
+   ========================================================================== */
+.feedback-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+}
+
+.feedback-tabs::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+.tab-button {
+  padding: 0.75rem 1.25rem;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-weight: 500;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+.tab-button i {
+  margin-right: 0.5rem;
+}
+
+.tab-button:hover {
+  color: var(--primary-color);
+}
+
+.tab-button.active {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+}
+
+/* ==========================================================================
+   Tab Content
+   ========================================================================== */
+.feedback-content {
+  min-height: 300px;
+}
+
+/* ==========================================================================
+   Overview Tab
+   ========================================================================== */
+.feedback-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.feedback-summary-card {
+  background-color: var(--background-light);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.feedback-summary-card h3 {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.feedback-summary-card h3 i {
+  margin-right: 0.5rem;
+  color: var(--primary-color);
+}
+
+/* ==========================================================================
+   ATS Meter
+   ========================================================================== */
+.ats-meter-container {
+  margin: 1.5rem 0;
+}
+
+.ats-meter {
+  height: 12px;
+  background-color: #e5e7eb;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.ats-meter-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 1s ease-in-out;
+}
+
+.ats-meter-fill.high-score {
+  background-color: var(--success-color);
+}
+
+.ats-meter-fill.medium-score {
+  background-color: var(--warning-color);
+}
+
+.ats-meter-fill.low-score {
+  background-color: var(--error-color);
+}
+
+.ats-meter-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text-light);
+}
+
+.ats-description {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+}
+
+/* ==========================================================================
+   Lists and Items
+   ========================================================================== */
+.strengths-list,
+.improvements-list {
+  list-style: none;
+  padding: 0;
+}
+
+.strengths-list li,
+.improvements-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.875rem;
+}
+
+.strengths-list li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--success-color);
+  font-weight: bold;
+}
+
+.improvements-list li:before {
+  content: "!";
+  position: absolute;
+  left: 0;
+  color: var(--warning-color);
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   Suggestions Tab
+   ========================================================================== */
+.feedback-suggestions h3,
+.feedback-keywords h3,
+.feedback-formatting h3 {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  color: var(--text-color);
+}
+
+.suggestions-list {
+  list-style: none;
+  padding: 0;
+}
+
+.suggestion-item {
+  display: flex;
+  margin-bottom: 1rem;
+  background-color: var(--background-light);
+  padding: 1rem;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.suggestion-item:hover {
+  transform: translateY(-2px);
+}
+
+.suggestion-icon {
+  color: var(--primary-color);
+  margin-right: 1rem;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+/* ==========================================================================
+   Keywords Tab
+   ========================================================================== */
+.keywords-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.keyword-tag {
+  background-color: rgba(79, 70, 229, 0.1);
+  color: var(--primary-color);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.keyword-tag:hover {
+  transform: translateY(-2px);
+}
+
+.keyword-tag i {
+  margin-right: 0.5rem;
+  font-size: 0.75rem;
+}
+
+/* ==========================================================================
+   Tips and Info Boxes
+   ========================================================================== */
+.keywords-tip,
+.formatting-tip {
+  display: flex;
+  background-color: rgba(16, 185, 129, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+}
+
+.keywords-tip i,
+.formatting-tip i {
+  color: var(--success-color);
+  margin-right: 1rem;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+.keywords-tip p,
+.formatting-tip p {
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+/* ==========================================================================
+   Formatting Tab
+   ========================================================================== */
+.formatting-list {
+  list-style: none;
+  padding: 0;
+}
+
+.formatting-item {
+  display: flex;
+  margin-bottom: 1rem;
+  background-color: var(--background-light);
+  padding: 1rem;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.formatting-item:hover {
+  transform: translateY(-2px);
+}
+
+.formatting-icon {
+  color: var(--warning-color);
+  margin-right: 1rem;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+/* ==========================================================================
+   Empty States
+   ========================================================================== */
+.no-data-message {
+  text-align: center;
+  color: var(--text-light);
+  padding: 2rem;
+  background-color: var(--background-light);
+  border-radius: 8px;
+}
+
+/* ==========================================================================
+   Download Button
+   ========================================================================== */
+.download-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  font-size: 0.875rem;
+  border: none;
+  cursor: pointer;
+}
+
+.download-button:hover:not(:disabled) {
+  background-color: var(--secondary-hover);
+  color: white;
+}
+
+.download-button:disabled {
+  background-color: var(--text-light);
+  cursor: not-allowed;
+}
+
+.button-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 0.5rem;
+  display: inline-block;
+}
+
+/* ==========================================================================
+   Loading Skeleton Animations
+   ========================================================================== */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 20%,
+    rgba(255, 255, 255, 0.5) 60%,
+    rgba(255, 255, 255, 0)
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skeleton-text {
+  height: 1rem;
+  margin-bottom: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+}
+
+.skeleton-text:last-child {
+  width: 80%;
+}
+
+.resume-details-card.skeleton h1.skeleton-text {
+  height: 2rem;
+  width: 70%;
+  margin-bottom: 1rem;
+}
+
+.resume-details-card.skeleton .score-circle.skeleton {
+  background-color: rgba(0, 0, 0, 0.08);
+  color: transparent;
+}
+
+.skeleton-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.skeleton-tabs .tab-button.skeleton {
+  height: 2.5rem;
+  width: 120px;
+  background-color: rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+}
+
+.feedback-summary-card.skeleton {
+  min-height: 200px;
+}
+
+.feedback-summary-card.skeleton h3.skeleton-text {
+  height: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.feedback-summary-card.skeleton .skeleton-text {
+  height: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* ==========================================================================
+   Mobile Responsive Design
+   ========================================================================== */
+@media (max-width: 768px) {
+  .details-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .resume-details-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .resume-details-info {
+    margin-bottom: 1.5rem;
+  }
+
+  .resume-details-card {
+    padding: 1.5rem;
+  }
+
+  .feedback-overview {
+    grid-template-columns: 1fr;
+  }
+
+  .tab-button {
+    padding: 0.75rem 1rem;
+  }
+}
