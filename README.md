@@ -4,7 +4,7 @@
 
 ## 🎯 **Live Demo**
 
-| 🔗 **Link** | https://resume-analyzer-frontend-ytnf.onrender.com |
+| 🔗 **Link** | https://resume-analyzer-frontend-yntf.onrender.com |
 |------------|----------------------------------------------------|
 | 🖥️ **Backend API** | https://resume-analyzer-backend-2gxk.onrender.com |
 | 📊 **Test Credentials** | Email: `test@example.com` \| Password: `Test123!` |
